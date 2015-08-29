@@ -1,0 +1,15 @@
+<configuration>
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%X{mpiContext}[%date{yyyy-MM-dd HH:mm:ss.SSS}] %-5level [%thread][%-25logger{15}] - %replace(%msg){'[3-6]\d{12,18}', '***CENSORED***'}%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="akka" level="info" additivity="false">
+    <appender-ref ref="console" />
+  </logger>
+
+  <root level="debug">
+    <appender-ref ref="console"/>
+  </root>
+</configuration>
